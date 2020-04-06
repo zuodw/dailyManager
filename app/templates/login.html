@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Sign In</h1>
+<h1>ログイン</h1>
 <form action="login" method="post" name="login">
-	{{ form.csrf_token }}
-	<p>
-		{% for error in form.username.errors %}
-			<span style="color:red;">[{{ error }}]</span><br>
-		{% endfor %}
+    {{ form.csrf_token }}
+    <p>
+        {% for error in form.username.errors %}
+            <span style="color:red;">[{{ error }}]</span><br>
+        {% endfor %}
 
-		{% for error in form.password.errors %}
-			<span style="color:red;">[{{ error }}]</span><br>
-		{% endfor %}
+        {% for error in form.password.errors %}
+            <span style="color:red;">[{{ error }}]</span><br>
+        {% endfor %}
 
-		{{ form.username.label }}:
-		{{ form.username(size=80) }}<br>
+        {{ form.username.label }}:
+        {{ form.username(size=80) }}<br>
 
-		{{ form.password.label }}:
-		{{ form.password(size=80) }}<br>
-	</p>
+        {{ form.password.label }}:
+        {{ form.password(size=80) }}<br>
+    </p>
 
-	<p><input type="submit" value="Sign IN"></p>
+    <p><input type="submit" value="ログイン"></p>
 </form>
 {% endblock %}

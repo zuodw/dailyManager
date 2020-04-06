@@ -3,13 +3,13 @@
 {% block content %}
 <table>
     <tr valign="top">
-        <td><img src="../static/resources/{{ user.get_imgpath() }}"></td>
-        <td><h1>User:{{ user.Name }}!</h1></td>
+        <td><img alt="img" width="40" height="40" src="../static/resources/{{ user.get_imgpath() }}"></td>
+        <td><h1>ユーザ:{{ user.Name }}!</h1></td>
     </tr>
 </table>
 <hr>
 
-<table border="1">
+<table border="1" class="table-hover">
     <tr>
         <td>日付</td>
         {% for p in person %}
