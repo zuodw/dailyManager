@@ -1,15 +1,15 @@
-flask
-Flask-WTF
-flask-login
-flask-OAuthlib
-flask-mail
-alembic
-
-sqlalchemy
-flask-whooshalchemy
-flask-babel
-guess_language
-flipflop
-coverage
-pymongo
-gunicorn
+pip install flask
+pip install Flask-WTF
+pip install flask-login
+pip install flask-OAuthlib
+pip install flask-mail
+pip install alembic
+pip install sqlalchemy
+pip install sqlalchemy-access
+pip install flask-whooshalchemy
+pip install flask-babel
+pip install guess_language
+pip install flipflop
+pip install coverage
+pip install pymongo
+pip install gunicorn

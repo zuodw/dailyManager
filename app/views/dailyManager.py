@@ -27,9 +27,11 @@ def user(username):
 
     # TODO 完了項目表示の切替
     if True:
-        completedPerson = [p for p in person if projectCtrl.query_bySNo(p.ProjectNO).SchduleState != 4]
+        # 未完了項目のみ表示
+        NotCompletedProject = [p.ProjectNO for p in person if projectCtrl.query_bySNo(p.ProjectNO).SchduleState != 4]
+        NotCompletedPerson = [p for p in person if projectCtrl.query_bySNo(p.ProjectNO).SchduleState != 4]
 
-    return render_template('user.html', user=user, person=completedPerson)
+    return render_template('user.html', user=user, person=NotCompletedPerson)
 
 
 @app.route('/login', methods=['GET', 'POST'])
