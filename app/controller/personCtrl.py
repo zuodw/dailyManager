@@ -7,3 +7,7 @@ class PersonCtrl(object):
         person = session.query(Person).filter_by(Name=username)
         return person
 
+    def query_byName_Last2Week(self, username):
+        person = session.query(Person).filter_by(Name=username)[-14:]
+        return person
+

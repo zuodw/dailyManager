@@ -21,17 +21,30 @@ def user(username):
         return redirect('/')
 
     personCtrl = PersonCtrl()
-    person = personCtrl.query_byName(username)
+    person = personCtrl.query_byName_Last2Week(username)
 
     projectCtrl = ProjectCtrl()
 
     # TODO 完了項目表示の切替
     if True:
         # 未完了項目のみ表示
-        NotCompletedProject = [p.ProjectNO for p in person if projectCtrl.query_bySNo(p.ProjectNO).SchduleState != 4]
         NotCompletedPerson = [p for p in person if projectCtrl.query_bySNo(p.ProjectNO).SchduleState != 4]
 
-    return render_template('user.html', user=user, person=NotCompletedPerson)
+        # 工程号List去重
+        NotCompletedProject = list(set([pj.ProjectNO for pj in NotCompletedPerson]))
+
+        # key: 日期   value: dict(工程号:时间)
+        data = {}
+        for person in NotCompletedPerson:
+            value = {person.ProjectNO: person.Hours}
+            key = str(person.UpdateDate)
+            if key not in data:
+                data[key] = []
+            data[key].append(value)
+
+        print(data)
+
+    return render_template('user.html', user=user, projectList=NotCompletedProject, dailyDetail=data)
 
 
 @app.route('/login', methods=['GET', 'POST'])

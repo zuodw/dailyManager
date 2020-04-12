@@ -12,20 +12,24 @@
 <table border="1" class="table-hover">
     <tr>
         <td>日付</td>
-        {% for p in person %}
-        <td title={{ p.SubPjStage }}>{{ p.ProjectNO }}</td>
+        {% for l in projectList %}
+        <td title={{ l }}>{{ l }}</td>
         {% endfor %}
     </tr>
 
-    {% for p in person %}
+    {% for k, v in dailyDetail.items() %}
     <tr>
-        <td>{{ p.UpdateDate }}</td>
-        {% for p1 in person %}
-            {% if p.ProjectNO == p1.ProjectNO %}
-            <td>{{ p.Hours }}</td>
-            {% else %}
-            <td></td>
-            {% endif %}
+        <td>{{ k }}</td>
+        {% for l in projectList %}
+            {% for vv in v %}
+                {% for kkk, vvv in vv.items() %}
+                    {% if kkk == l %}
+                    <td>{{ vvv }}</td>
+                    {% else %}
+                    <td></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
         {% endfor %}
     </tr>
     {% endfor %}
